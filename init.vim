@@ -2,7 +2,7 @@ syntax enable
 filetype plugin indent on
 
 " load packer for package management
-" lua require('plugins')
+lua require('plugins')
 
 let mapleader=","
 
