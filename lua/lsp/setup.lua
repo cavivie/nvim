@@ -1,34 +1,23 @@
-local lsp_installer = require"nvim-lsp-installer"
+require("nvim-lsp-installer").setup({
+  -- automatically install language servers
+  automatic_installation = true,
+})
+
+local lspconfig = require("lspconfig")
 
 -- language server list
 -- { key: language value: config }
+-- lsp config path: lua/lsp/langs/*.lua
 local servers = {
-  sumneko_lua = require"lsp.lua", -- /lua/lsp/lua.lua
-  rust_analyzer = require"lsp.rust", -- /lua/lsp/rust.lua
+  sumneko_lua = require("lsp.langs.lua"),
+  rust_analyzer = require("lsp.langs.rust"),
 }
 
-for name, _ in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
-    end
+for name, config in pairs(servers) do
+  if config ~= nil and type(config) == "table" then
+    -- custom lsp must implement on_setup
+    config.on_setup(lspconfig[name])
+  else
+    lspconfig[name].setup({})
   end
 end
-
-lsp_installer.on_server_ready(function(server)
-  local opts = servers[server.name]
-  if opts then
-    opts.on_attach = function(_, bufnr)
-      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-      -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-      require('keybindings').maplsp(buf_set_keymap)
-    end
-    opts.flags = {
-      debounce_text_changes = 150,
-    }
-    server:setup(opts)
-  end
-end)
-

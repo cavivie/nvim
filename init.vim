@@ -1,16 +1,32 @@
 syntax enable
 filetype plugin indent on
 
-" load packer for package management
+" load color scheme
+lua require('colorscheme')
+
+" load keybindings
+lua require('keybindings')
+
+" load package manager
 lua require('plugins')
 
-let mapleader=","
+" load plugin config
+lua require('plugin-config.nvim-tree')
+lua require('plugin-config.telescope')
+lua require('plugin-config.gitsigns')
+lua require('plugin-config.fidget')
 
-" load language server
+" load auto commands 
+lua require('autocmds')
+
+" load language manager
 lua require('lsp/setup')
+lua require('lsp/cmp')
+lua require('lsp/ui')
+lua require('lsp/fmt')
 
-" load language completion
-lua require('lsp/nvim-cmp')
+" load debugging adapter
+lua require('dap.nvim-dap')
 
 " ======================================
 " rust config

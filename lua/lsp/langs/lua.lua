@@ -1,8 +1,9 @@
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-return {
+local opts = {
   settings = {
     Lua = {
       runtime = {
@@ -18,11 +19,34 @@ return {
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
-        enable = false
+        enable = false,
       },
     },
   },
+  flags = {
+    debounce_text_changes = 150,
+  },
+  on_attach = function(client, bufnr)
+    -- disable format function, use specified plugin
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+
+    local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+
+    -- bind keys
+    require("keybindings").map_lsp(buf_set_keymap)
+  end,
+}
+
+return {
+  on_setup = function(server)
+    opts = require("lua-dev").setup({ lspconfig = opts })
+    server.setup(opts)
+  end,
 }
