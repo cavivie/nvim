@@ -71,16 +71,19 @@ packer.startup(function(use)
     -- Autocompletion engine
     'hrsh7th/nvim-cmp',
 
-    -- Autocompletion source 
+    -- Autocompletion source
+    "hrsh7th/cmp-vsnip",
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp-signature-help',
 
-    -- Snippets source
-    'saadparwaiz1/cmp_luasnip',
-    'L3MON4D3/LuaSnip',
+    -- Snippet engine
+    "hrsh7th/vim-vsnip",
+
+    -- Snippet source
+    "hrsh7th/cmp-vsnip",
 
     -- UI enhance
     'onsails/lspkind-nvim',
@@ -88,6 +91,8 @@ packer.startup(function(use)
 
     -- Lua enhance 
     'folke/lua-dev.nvim',
+    'saadparwaiz1/cmp_luasnip',
+    'L3MON4D3/LuaSnip',
 
     -- Rust enhance
     'simrat39/rust-tools.nvim',
