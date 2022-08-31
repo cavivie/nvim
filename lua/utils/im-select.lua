@@ -1,7 +1,20 @@
 local M = {}
 
-M.defaultIM = "com.apple.keylayout.ABC"
+defaultIMs = {
+  "com.apple.keylayout.US",
+  "com.apple.keylayout.ABC"
+}
+M.defaultIM = vim.fn.system({ "im-select" })
 M.currentIM = M.defaultIM
+for _, defaultIM in ipairs(defaultIMs) do
+  vim.cmd(":silent :!im-select" .. " " .. defaultIM)
+  local defaultIM = vim.fn.system({ "im-select" })
+  vim.cmd(":silent :!im-select" .. " " .. M.currentIM)
+  if defaultIM then
+    M.defaultIM = defaultIM
+    break
+  end
+end
 
 M.macInsertLeave = function()
   M.currentIM = vim.fn.system({ "im-select" })

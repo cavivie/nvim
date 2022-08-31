@@ -18,14 +18,14 @@ autocmd("BufEnter", {
 -- im auto select on insert leave and enter
 -- need to install im-select:
 -- https://github.com/daipeihust/im-select
--- autocmd("InsertLeave", {
---   group = auto_group,
---   callback = require("utils.im-select").macInsertLeave,
--- })
--- autocmd("InsertEnter", {
---   group = auto_group,
---   callback = require("utils.im-select").macInsertEnter,
--- })
+autocmd("InsertLeave", {
+  group = auto_group,
+  callback = require("utils.im-select").macInsertLeave,
+})
+autocmd("InsertEnter", {
+  group = auto_group,
+  callback = require("utils.im-select").macInsertEnter,
+})
 
 -- insertion auto start on open term
 autocmd("TermOpen", {

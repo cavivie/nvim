@@ -15,9 +15,14 @@ null_ls.setup({
     --  brew install shfmt
     formatting.shfmt,
     -- StyLua
-    formatting.stylua,
+    formatting.stylua.with({
+      extra_args = {
+        "--indent-type=Spaces",
+        "--indent-width=2",
+      },
+    }),
     -- frontend
-    formatting.prettier.with({ -- 比默认少了 markdown
+    formatting.prettier.with({
       filetypes = {
         "javascript",
         "javascriptreact",
@@ -39,7 +44,6 @@ null_ls.setup({
     formatting.rustfmt,
     -- Python
     -- pip install black
-    -- asdf reshim python
     formatting.black.with({ extra_args = { "--fast" } }),
     -----------------------------------------------------
     -- Ruby

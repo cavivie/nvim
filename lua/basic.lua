@@ -40,7 +40,7 @@ vim.wo.wrap = false
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
 
--- right reference line, 
+-- right reference line,
 -- exceeding on code is too long
 -- consider wrapping to new line
 -- vim.wo.colorcolumn = "80"
@@ -71,4 +71,4 @@ vim.o.list = false
 -- vim.o.listchars = "space:·,tab:··"
 
 -- rust config
-vim.g.rust_clip_command = 'pbcopy'
+vim.g.rust_clip_command = "pbcopy"

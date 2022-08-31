@@ -34,7 +34,7 @@ map("n", "<leader>wq", ":wqa!<CR>", opt)
 map("n", "<leader>q", ":q!<CR>", opt)
 map("n", "<leader>qa", ":qa!<CR>", opt)
 
--- move line break on normal mode  
+-- move line break on normal mode
 -- fix wrap: will not move to new line when current line is too long
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -62,7 +62,7 @@ map("v", ">", ">gv", opt)
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
--- paste not yank on visual mode 
+-- paste not yank on visual mode
 map("v", "p", '"_dP', opt)
 
 -----------------------------------------------------------------------------
@@ -128,21 +128,21 @@ plugin_keys.telescopeList = {
 -- nvim-lsp
 plugin_keys.map_lsp = function(mapbuf)
   -- rename
-  mapbuf('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opt)
+  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
   -- code action
-  mapbuf('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opt)
+  mapbuf("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
-  mapbuf('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opt)
-  mapbuf('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opt)
-  mapbuf('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opt)
-  mapbuf('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opt)
-  mapbuf('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opt)
+  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
+  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
+  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
   -- diagnostic
-  mapbuf('n', 'go', '<cmd>lua vim.diagnostic.open_float()<CR>', opt)
-  mapbuf('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opt)
-  mapbuf('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opt)
+  mapbuf("n", "go", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
+  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  mapbuf("n", "gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
   -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-  mapbuf('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opt)
+  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
   -- mapbuf('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opt)
   -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
   -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
@@ -153,30 +153,30 @@ end
 -- nvim-cmp
 plugin_keys.cmp = function(cmp)
   return {
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<A-.>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<A-,>'] = cmp.mapping({
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<A-,>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm({
-      select = true ,
-      behavior = cmp.ConfirmBehavior.Replace
+    ["<CR>"] = cmp.mapping.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
     }),
     -- ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
   }
 end
 
 -- nvim-dap
 plugin_keys.map_dap = function()
-  -- start 
+  -- start
   map("n", "<leader>dd", ":RustDebuggables<CR>", opt)
-  -- end 
+  -- end
   map(
     "n",
     "<leader>de",
@@ -190,14 +190,14 @@ plugin_keys.map_dap = function()
   )
   -- continue
   map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opt)
-  -- set breakpoint 
+  -- set breakpoint
   map("n", "<leader>dt", ":lua require('dap').toggle_breakpoint()<CR>", opt)
   map("n", "<leader>dT", ":lua require('dap').clear_breakpoints()<CR>", opt)
   -- stepOver, stepOut, stepInto
   map("n", "<leader>dj", ":lua require'dap'.step_over()<CR>", opt)
   map("n", "<leader>dk", ":lua require'dap'.step_out()<CR>", opt)
   map("n", "<leader>dl", ":lua require'dap'.step_into()<CR>", opt)
-  -- dialog 
+  -- dialog
   map("n", "<leader>dh", ":lua require'dapui'.eval()<CR>", opt)
 end
 

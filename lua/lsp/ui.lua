@@ -131,4 +131,3 @@ M.formatting = {
 }
 
 return M
-
