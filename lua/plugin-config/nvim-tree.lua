@@ -1,13 +1,13 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- local nvim_tree = require'nvim-tree'
-local ok, nvim_tree = pcall(require, "nvim-tree")
+local ok, nvim_tree = pcall(require, 'nvim-tree')
 if not ok then
-  vim.notify("Not found installed nvim-tree!")
+  vim.notify('Not found installed nvim-tree!')
   return
 end
 
 -- 列表操作快捷键
-local list_keys = require("keybindings").nvimTreeList
+local list_keys = require('keybindings').nvimTreeList
 
 nvim_tree.setup({
   -- 完全禁止内置netrw
@@ -32,7 +32,7 @@ nvim_tree.setup({
     -- 宽度
     width = 34,
     -- 也可以 'right'
-    side = "left",
+    side = 'left',
     -- 隐藏根目录
     hide_root_folder = false,
     -- 自定义列表中快捷键
@@ -45,7 +45,7 @@ nvim_tree.setup({
     number = false,
     relativenumber = false,
     -- 显示图标
-    signcolumn = "yes",
+    signcolumn = 'yes',
   },
   actions = {
     open_file = {
@@ -59,7 +59,7 @@ nvim_tree.setup({
   -- https://github.com/4U6U57/wsl-open/
   system_open = {
     -- mac
-    cmd = "open",
+    cmd = 'open',
     -- windows
     -- cmd = "wsl-open",
   },

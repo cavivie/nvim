@@ -1,6 +1,6 @@
-local ok, null_ls = pcall(require, "null-ls")
+local ok, null_ls = pcall(require, 'null-ls')
 if not ok then
-  vim.notify("Not found installed null-ls!")
+  vim.notify('Not found installed null-ls!')
   return
 end
 
@@ -15,36 +15,31 @@ null_ls.setup({
     --  brew install shfmt
     formatting.shfmt,
     -- StyLua
-    formatting.stylua.with({
-      extra_args = {
-        "--indent-type=Spaces",
-        "--indent-width=2",
-      },
-    }),
+    formatting.stylua,
     -- frontend
     formatting.prettier.with({
       filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "css",
-        "scss",
-        "less",
-        "html",
-        "json",
-        "yaml",
-        "graphql",
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'vue',
+        'css',
+        'scss',
+        'less',
+        'html',
+        'json',
+        'yaml',
+        'graphql',
       },
-      prefer_local = "node_modules/.bin",
+      prefer_local = 'node_modules/.bin',
     }),
     -- rustfmt
     -- rustup component add rustfmt
     formatting.rustfmt,
     -- Python
     -- pip install black
-    formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.black.with({ extra_args = { '--fast' } }),
     -----------------------------------------------------
     -- Ruby
     -- gem install rubocop
@@ -53,7 +48,7 @@ null_ls.setup({
     -- formatting.fixjson,
     -- Diagnostics  ---------------------
     diagnostics.eslint.with({
-      prefer_local = "node_modules/.bin",
+      prefer_local = 'node_modules/.bin',
     }),
     -- diagnostics.markdownlint,
     -- markdownlint-cli2
@@ -66,13 +61,13 @@ null_ls.setup({
     -- code actions ---------------------
     code_actions.gitsigns,
     code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
+      prefer_local = 'node_modules/.bin',
     }),
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
   -- #{c}: code (if available)
-  diagnostics_format = "[#{s}] #{m}",
+  diagnostics_format = '[#{s}] #{m}',
   on_attach = function(_)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
     -- if client.resolved_capabilities.document_formatting then

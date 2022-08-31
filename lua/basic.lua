@@ -1,6 +1,6 @@
 -- text encoding utf8
-vim.g.encoding = "UTF-8"
-vim.o.fileencoding = "utf-8"
+vim.g.encoding = 'UTF-8'
+vim.o.fileencoding = 'utf-8'
 
 -- highlight cursor line
 vim.wo.cursorline = true
@@ -71,4 +71,4 @@ vim.o.list = false
 -- vim.o.listchars = "space:·,tab:··"
 
 -- rust config
-vim.g.rust_clip_command = "pbcopy"
+vim.g.rust_clip_command = 'pbcopy'

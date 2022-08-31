@@ -1,18 +1,18 @@
 function _G.log(...)
   local objects = {}
-  for i = 1, select("#", ...) do
+  for i = 1, select('#', ...) do
     local v = select(i, ...)
     table.insert(objects, vim.inspect(v))
   end
 
-  print(table.concat(objects, "\n"))
+  print(table.concat(objects, '\n'))
   return ...
 end
 
 function _G.requirePlugin(name)
   local status_ok, plugin = pcall(require, name)
   if not status_ok then
-    vim.notify("Not found plugin: " .. name)
+    vim.notify('Not found plugin: ' .. name)
     return nil
   end
   return plugin

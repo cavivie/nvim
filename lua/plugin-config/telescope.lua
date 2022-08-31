@@ -1,6 +1,6 @@
-local ok, telescope = pcall(require, "telescope")
+local ok, telescope = pcall(require, 'telescope')
 if not ok then
-  vim.notify("Not found installed telescope!")
+  vim.notify('Not found installed telescope!')
   return
 end
 
@@ -8,11 +8,11 @@ end
 telescope.setup({
   defaults = {
     -- enter init mode while opening window, defaults to insert mode, also can be normal mode
-    initial_mode = "insert",
+    initial_mode = 'insert',
     -- vertical , center , cursor
-    layout_strategy = "horizontal",
+    layout_strategy = 'horizontal',
     -- shortcuts in window
-    mappings = require("keybindings").telescopeList,
+    mappings = require('keybindings').telescopeList,
   },
   pickers = {
     find_files = {
@@ -20,15 +20,18 @@ telescope.setup({
     },
   },
   extensions = {
-    ["ui-select"] = {
-      require("telescope.themes").get_dropdown({
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown({
         -- even more opts
       }),
     },
   },
 })
 
-pcall(telescope.load_extension, "env")
+pcall(telescope.load_extension, 'env')
 -- to get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-pcall(telescope.load_extension, "ui-select")
+pcall(telescope.load_extension, 'ui-select')
+
+-- search notication histories
+pcall(telescope.load_extension, 'notify')

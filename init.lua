@@ -1,29 +1,31 @@
 -- load basic config
-require("basic")
+require('basic')
 
 -- load color scheme
-require("colorscheme")
+require('colorscheme')
 
 -- load keybindings
-require("keybindings")
+require('keybindings')
 
 -- load package manager
-require("plugins")
+require('plugins')
 
 -- load plugin config
-require("plugin-config.nvim-tree")
-require("plugin-config.telescope")
-require("plugin-config.gitsigns")
-require("plugin-config.fidget")
+require('plugin-config.dashboard')
+require('plugin-config.notify')
+require('plugin-config.nvim-tree')
+require('plugin-config.telescope')
+require('plugin-config.gitsigns')
+require('plugin-config.fidget')
 
 -- load auto commands
-require("autocmds")
+require('autocmds')
 
 -- load language manager
-require("lsp/setup")
-require("lsp/cmp")
-require("lsp/ui")
-require("lsp/fmt")
+require('lsp.setup')
+require('lsp.cmp')
+require('lsp.fmt')
+require('lsp.ui')
 
 -- load debugging adapter
-require("dap.nvim-dap")
+require('dap.nvim-dap')

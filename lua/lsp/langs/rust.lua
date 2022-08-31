@@ -1,6 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
 local opts = {
-  capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  ),
 
   flags = {
     debounce_text_changes = 150,
@@ -14,13 +16,13 @@ local opts = {
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     -- bind keys
-    require("keybindings").map_lsp(buf_set_keymap)
+    require('keybindings').map_lsp(buf_set_keymap)
   end,
 
   settings = {
-    ["rust-analyzer"] = {
+    ['rust-analyzer'] = {
       checkOnSave = {
-        command = "clippy",
+        command = 'clippy',
       },
     },
   },
@@ -28,13 +30,13 @@ local opts = {
 
 return {
   on_setup = function(server)
-    local ok, rust_tools = pcall(require, "rust-tools")
+    local ok, rust_tools = pcall(require, 'rust-tools')
     if not ok then
       server.setup(opts)
     else
       rust_tools.setup({
         server = opts,
-        dap = require("dap.nvim-dap.rust"),
+        dap = require('dap.nvim-dap.rust'),
       })
     end
   end,
