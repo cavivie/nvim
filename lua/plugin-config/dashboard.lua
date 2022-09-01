@@ -3,7 +3,7 @@ local db = require('dashboard')
 
 if vim.fn.has('mac') then
   -- macos
-  db.preview_command = 'cat | lolcat -F 0.3'
+  db.preview_command = 'cat | lolcat -f 0.3'
 else
   -- linux
   db.preview_command = 'ueberzug'
