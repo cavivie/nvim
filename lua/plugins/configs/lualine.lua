@@ -2,7 +2,7 @@
 require('lualine').setup({
   options = {
     icons_enabled = true,
-    disabled_filetypes = { 'NvimTree', 'TelescopePrompt', 'packer', 'toggleterm' },
+    disabled_filetypes = { 'NvimTree', 'TelescopePrompt', 'packer', 'toggleterm', 'dashboard' },
     always_divide_middle = true,
     globalstatus = true,
   },
@@ -14,7 +14,6 @@ require('lualine').setup({
     lualine_y = {},
     lualine_z = {},
   },
-
   inactive_winbar = {
     lualine_a = {},
     lualine_b = {},
