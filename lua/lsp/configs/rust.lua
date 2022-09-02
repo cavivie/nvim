@@ -36,7 +36,7 @@ return {
     else
       rust_tools.setup({
         server = opts,
-        dap = require('dap.nvim-dap.rust'),
+        dap = require('debugger.rust'),
       })
     end
   end,

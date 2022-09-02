@@ -46,6 +46,8 @@ local opts = {
 
 return {
   on_setup = function(server)
+    require('debugger.lua').setup()
+    require('keybindings').map_dap()
     opts = require('lua-dev').setup({ lspconfig = opts })
     server.setup(opts)
   end,

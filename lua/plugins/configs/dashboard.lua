@@ -1,3 +1,4 @@
+-- https://github.com/glepnir/dashboard-nvim
 local home = os.getenv('HOME')
 local db = require('dashboard')
 
@@ -15,9 +16,9 @@ db.preview_file_width = 40
 db.custom_center = {
   {
     icon = '  ',
-    desc = 'Recently latest session                  ',
-    shortcut = 'SPC s l',
+    desc = 'Recently latest session                 ',
     action = 'SessionLoad',
+    shortcut = 'SPC s l',
   },
   {
     icon = '  ',
@@ -27,7 +28,7 @@ db.custom_center = {
   },
   {
     icon = '  ',
-    desc = 'Find  File                              ',
+    desc = 'Find File                               ',
     action = 'Telescope find_files find_command=rg,--hidden,--files',
     shortcut = 'SPC f f',
   },
@@ -39,7 +40,7 @@ db.custom_center = {
   },
   {
     icon = '  ',
-    desc = 'Find  word                              ',
+    desc = 'Find word                               ',
     action = 'Telescope live_grep',
     shortcut = 'SPC f w',
   },

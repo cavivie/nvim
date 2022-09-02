@@ -1,3 +1,4 @@
+-- https://github.com/rcarriga/nvim-notify
 -- notifaction enhance
 require('notify').setup({
   stages = 'slide',

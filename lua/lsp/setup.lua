@@ -9,8 +9,8 @@ local lspconfig = require('lspconfig')
 -- { key: language value: config }
 -- lsp config path: lua/lsp/langs/*.lua
 local servers = {
-  sumneko_lua = require('lsp.langs.lua'),
-  rust_analyzer = require('lsp.langs.rust'),
+  sumneko_lua = require('lsp.configs.lua'),
+  rust_analyzer = require('lsp.configs.rust'),
 }
 
 for name, config in pairs(servers) do

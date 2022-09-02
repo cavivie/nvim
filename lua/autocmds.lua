@@ -32,7 +32,12 @@ autocmd('InsertEnter', {
 -- insertion auto start on open term
 autocmd('TermOpen', {
   group = auto_group,
-  command = 'startinsert',
+  callback = function()
+    local status, dashboard = pcall(require, 'dashboard')
+    if status and dashboard.dashboard_loaded then
+      vim.api.nvim_command('startinsert')
+    end
+  end,
 })
 
 -- formatting auto sync on save

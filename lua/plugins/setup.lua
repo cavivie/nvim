@@ -1,5 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local packer_bootstrap
@@ -36,11 +34,23 @@ packer.startup(function(use)
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
 
-  -- Bootstrap Dashboard
+  -- Bootstrap dashboard
   use('glepnir/dashboard-nvim')
+
+  -- Statusline on bottom
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   -- Notification enhance
   use('rcarriga/nvim-notify')
+
+  -- 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
 
   -- File explorer
   use({
@@ -62,6 +72,7 @@ packer.startup(function(use)
   })
   use('LinArcX/telescope-env.nvim')
   use('nvim-telescope/telescope-ui-select.nvim')
+  use('nvim-telescope/telescope-file-browser.nvim')
 
   -- Colorschemes
   use('EdenEast/nightfox.nvim')

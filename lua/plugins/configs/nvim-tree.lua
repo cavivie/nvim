@@ -1,57 +1,53 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
--- local nvim_tree = require'nvim-tree'
 local ok, nvim_tree = pcall(require, 'nvim-tree')
 if not ok then
   vim.notify('Not found installed nvim-tree!')
   return
 end
 
--- 列表操作快捷键
+-- list operation shortcuts
 local list_keys = require('keybindings').nvimTreeList
 
 nvim_tree.setup({
-  -- 完全禁止内置netrw
+  -- fully disable builtin netrw
   disable_netrw = true,
-  -- 不显示 git 状态图标
+  -- disable git status icon
   git = {
     enable = false,
   },
-  -- project plugin 需要这样设置
+  -- project plugin 
   update_cwd = true,
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
   filters = {
-    -- 隐藏 .文件
+    -- hide dot files
     dotfiles = true,
-    -- 隐藏 node_modules 文件夹
+    -- hide node_modules folders
     -- custom = { "node_modules" },
   },
   view = {
-    -- 宽度
     width = 34,
-    -- 也可以 'right'
     side = 'left',
-    -- 隐藏根目录
     hide_root_folder = false,
-    -- 自定义列表中快捷键
+    -- custom list shortcuts
     mappings = {
-      -- 只用内置快捷键
+      -- use builtin shortcuts only
       custom_only = true,
       list = list_keys,
     },
-    -- 不显示行数
+    -- disable line number
     number = false,
     relativenumber = false,
-    -- 显示图标
+    -- enable column sign icon
     signcolumn = 'yes',
   },
   actions = {
     open_file = {
-      -- 首次打开大小适配
+      -- resize window while opening
       resize_window = true,
-      -- 打开文件时关闭 tree
+      -- quit nvim tree while opening
       quit_on_open = false,
     },
   },
