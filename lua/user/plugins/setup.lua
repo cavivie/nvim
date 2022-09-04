@@ -2,7 +2,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
-  vim.notify('Installing pakcer.nvim，please wait...')
+  vim.notify('Installing pakcer.nvim, please wait...')
   packer_bootstrap = fn.system({
     'git',
     'clone',
@@ -38,19 +38,24 @@ packer.startup(function(use)
   use('glepnir/dashboard-nvim')
 
   -- Statusline on bottom
-  use {
+  use({
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  })
 
   -- Notification enhance
   use('rcarriga/nvim-notify')
 
-  -- 
-  use {
+  -- Improve startup time
+  use('lewis6991/impatient.nvim')
+
+  --
+  use({
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+  })
 
   -- File explorer
   use({
@@ -89,7 +94,6 @@ packer.startup(function(use)
     'hrsh7th/nvim-cmp',
 
     -- Autocompletion source
-    'hrsh7th/cmp-vsnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -97,10 +101,10 @@ packer.startup(function(use)
     'hrsh7th/cmp-nvim-lsp-signature-help',
 
     -- Snippet engine
-    'hrsh7th/vim-vsnip',
+    'L3MON4D3/LuaSnip',
 
     -- Snippet source
-    'hrsh7th/cmp-vsnip',
+    'saadparwaiz1/cmp_luasnip',
 
     -- UI enhance
     'onsails/lspkind-nvim',
@@ -108,8 +112,6 @@ packer.startup(function(use)
 
     -- Lua enhance
     'folke/lua-dev.nvim',
-    'saadparwaiz1/cmp_luasnip',
-    'L3MON4D3/LuaSnip',
 
     -- Rust enhance
     'simrat39/rust-tools.nvim',
@@ -135,7 +137,7 @@ packer.startup(function(use)
   use('j-hui/fidget.nvim')
 
   -- Sync while installing
-  if packer_bootstrap then
+  if packer_bootstrap and (not _G.PackerSync) then
     packer.sync()
   end
 end)

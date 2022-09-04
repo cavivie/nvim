@@ -1,5 +1,10 @@
 -- https://github.com/nvim-lualine/lualine.nvim
-require('lualine').setup({
+local status, lualine = pcall(require, 'lualine')
+if not status then
+  return
+end
+
+lualine.setup({
   options = {
     icons_enabled = true,
     disabled_filetypes = { 'NvimTree', 'TelescopePrompt', 'packer', 'toggleterm', 'dashboard' },

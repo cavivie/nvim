@@ -22,11 +22,11 @@ autocmd('BufEnter', {
 -- https://github.com/daipeihust/im-select
 autocmd('InsertLeave', {
   group = auto_group,
-  callback = require('utils.im-select').macInsertLeave,
+  callback = require('user.utils.im-select').macInsertLeave,
 })
 autocmd('InsertEnter', {
   group = auto_group,
-  callback = require('utils.im-select').macInsertEnter,
+  callback = require('user.utils.im-select').macInsertEnter,
 })
 
 -- insertion auto start on open term
@@ -52,8 +52,8 @@ autocmd('BufWritePost', {
   group = auto_group,
   -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
   callback = function()
-    if vim.fn.expand('<afile>') == 'lua/plugins.lua' then
-      vim.api.nvim_command('source lua/plugins.lua')
+    if vim.fn.expand('<afile>') == 'lua/user/plugins/setup.lua' then
+      vim.api.nvim_command('source lua/user/plugins/init.lua')
       vim.api.nvim_command('PackerSync')
     end
   end,

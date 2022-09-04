@@ -34,6 +34,9 @@ map('n', '<leader>wq', ':wqa!<CR>', opt)
 map('n', '<leader>q', ':q!<CR>', opt)
 map('n', '<leader>qa', ':qa!<CR>', opt)
 
+-- reload user config
+vim.keymap.set('n', '<leader><CR>', '<cmd>lua ReloadConfig()<CR>', opt)
+
 -- move line break on normal mode
 -- fix wrap: will not move to new line when current line is too long
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

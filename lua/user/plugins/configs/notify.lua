@@ -1,6 +1,11 @@
 -- https://github.com/rcarriga/nvim-notify
 -- notifaction enhance
-require('notify').setup({
+local status, notify = pcall(require, 'notify')
+if not status then
+  return
+end
+
+notify.setup({
   stages = 'slide',
   background_colour = 'FloatShadow',
   timeout = 3000,

@@ -1,6 +1,9 @@
 -- https://github.com/glepnir/dashboard-nvim
 local home = os.getenv('HOME')
-local db = require('dashboard')
+local status, db = pcall(require, 'dashboard')
+if not status then
+  return
+end
 
 if vim.fn.has('mac') then
   -- macos

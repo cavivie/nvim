@@ -1,7 +1,6 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
-local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-if not ok then
-  vim.notify('Not found installed nvim-treesitter!')
+local status, treesitter = pcall(require, 'nvim-treesitter.configs')
+if not status then
   return
 end
 

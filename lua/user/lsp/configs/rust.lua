@@ -16,7 +16,7 @@ local opts = {
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
     -- bind keys
-    require('keybindings').map_lsp(buf_set_keymap)
+    require('user.keybindings').map_lsp(buf_set_keymap)
   end,
 
   settings = {
@@ -36,7 +36,7 @@ return {
     else
       rust_tools.setup({
         server = opts,
-        dap = require('debugger.rust'),
+        dap = require('user.debugger.rust'),
       })
     end
   end,

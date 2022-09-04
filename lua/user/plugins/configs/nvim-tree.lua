@@ -1,12 +1,11 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
-local ok, nvim_tree = pcall(require, 'nvim-tree')
-if not ok then
-  vim.notify('Not found installed nvim-tree!')
+local status, nvim_tree = pcall(require, 'nvim-tree')
+if not status then
   return
 end
 
 -- list operation shortcuts
-local list_keys = require('keybindings').nvimTreeList
+local list_keys = require('user.keybindings').nvimTreeList
 
 nvim_tree.setup({
   -- fully disable builtin netrw
@@ -15,7 +14,7 @@ nvim_tree.setup({
   git = {
     enable = false,
   },
-  -- project plugin 
+  -- project plugin
   update_cwd = true,
   update_focused_file = {
     enable = true,

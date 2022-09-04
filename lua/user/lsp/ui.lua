@@ -1,5 +1,15 @@
 local M = {}
 
+local status, lspkind = pcall(require, 'lspkind')
+if not status then
+  return
+end
+
+local status, lspsaga = pcall(require, 'lspsaga')
+if not status then
+  return
+end
+
 -- custom editor ui
 vim.diagnostic.config({
   virtual_text = true,
@@ -13,7 +23,6 @@ for type, icon in pairs(signs) do
 end
 
 -- lspkind
-local lspkind = require('lspkind')
 lspkind.init({
   -- default: true
   -- with_text = true,
@@ -59,7 +68,6 @@ lspkind.init({
   },
 })
 
-local lspsaga = require('lspsaga')
 lspsaga.setup({ -- defaults ...
   debug = false,
   use_saga_diagnostic_sign = true,

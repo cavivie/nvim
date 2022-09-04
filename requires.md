@@ -1,5 +1,11 @@
 # Requirements
 
+### Im-select
+Input method selection.
+```shell
+brew tap daipeihust/tap && brew install im-select
+```
+
 ### Ripgrep
 Telescope live_grep and grep_string.
 ```shell

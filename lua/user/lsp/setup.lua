@@ -1,16 +1,24 @@
-require('nvim-lsp-installer').setup({
+local status, nvim_lsp_installer = pcall(require, 'nvim-lsp-installer')
+if not status then
+  return
+end
+
+local status, lspconfig = pcall(require, 'lspconfig')
+if not status then
+  return
+end
+
+nvim_lsp_installer.setup({
   -- automatically install language servers
   automatic_installation = true,
 })
-
-local lspconfig = require('lspconfig')
 
 -- language server list
 -- { key: language value: config }
 -- lsp config path: lua/lsp/langs/*.lua
 local servers = {
-  sumneko_lua = require('lsp.configs.lua'),
-  rust_analyzer = require('lsp.configs.rust'),
+  sumneko_lua = require('user.lsp.configs.lua'),
+  rust_analyzer = require('user.lsp.configs.rust'),
 }
 
 for name, config in pairs(servers) do

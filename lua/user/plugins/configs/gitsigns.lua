@@ -1,7 +1,6 @@
 -- https://github.com/lewis6991/gitsigns.nvim
-local ok, gitsigns = pcall(require, 'gitsigns')
-if not ok then
-  vim.notify('Not found installed gitsigns!')
+local status, gitsigns = pcall(require, 'gitsigns')
+if not status then
   return
 end
 
@@ -40,7 +39,7 @@ gitsigns.setup({
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = true, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = require('keybindings').gitsigns,
+  keymaps = require('user.keybindings').gitsigns,
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
@@ -71,5 +70,5 @@ gitsigns.setup({
   yadm = {
     enable = false,
   },
-  on_attach = require('keybindings').gitsigns_on_attach,
+  on_attach = require('user.keybindings').gitsigns_on_attach,
 })

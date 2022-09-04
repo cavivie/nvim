@@ -1,20 +1,15 @@
--- load basic config
-require('basic')
+if not vim.fn.has('nvim-0.8') then
+  vim.notify('Need neovim v0.8+ to run this config!')
+  return
+end
 
--- load color scheme
-require('colorscheme')
+local ok, _ = pcall(require, 'impatient')
+if not ok then
+  vim.notify('Not found installed impatient.nvim plugin!', vim.log.levels.WARN)
+end
 
--- load key bindings
-require('keybindings')
-
--- load all plugins
-require('plugins')
-
--- load auto commands
-require('autocmds')
-
--- load language server
-require('lsp')
-
--- load debugging adapter
-require('debugger')
+local ok, err = pcall(require, 'user')
+if not ok then
+  vim.notify(('Error loading core...\n\n%s'):format(err))
+  return
+end

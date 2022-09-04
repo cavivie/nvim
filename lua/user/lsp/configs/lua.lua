@@ -40,14 +40,14 @@ local opts = {
     end
 
     -- bind keys
-    require('keybindings').map_lsp(buf_set_keymap)
+    require('user.keybindings').map_lsp(buf_set_keymap)
   end,
 }
 
 return {
   on_setup = function(server)
-    require('debugger.lua').setup()
-    require('keybindings').map_dap()
+    require('user.debugger.lua').setup()
+    require('user.keybindings').map_dap()
     opts = require('lua-dev').setup({ lspconfig = opts })
     server.setup(opts)
   end,
