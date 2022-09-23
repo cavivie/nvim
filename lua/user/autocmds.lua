@@ -22,11 +22,11 @@ autocmd('BufEnter', {
 -- https://github.com/daipeihust/im-select
 autocmd('InsertLeave', {
   group = auto_group,
-  callback = require('user.utils.im-select').macInsertLeave,
+  callback = require('user.utils.im-select').insertLeave,
 })
 autocmd('InsertEnter', {
   group = auto_group,
-  callback = require('user.utils.im-select').macInsertEnter,
+  callback = require('user.utils.im-select').insertEnter,
 })
 
 -- insertion auto start on open term
